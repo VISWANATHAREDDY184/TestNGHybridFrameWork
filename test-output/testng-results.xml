@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-05-21T21:44:19 IST" name="Default suite" finished-at="2024-05-21T21:44:33 IST" duration-ms="14582">
+    <groups>
+    </groups>
+    <test started-at="2024-05-21T21:44:19 IST" name="Default test" finished-at="2024-05-21T21:44:33 IST" duration-ms="14582">
+      <class name="testcases.Login">
+        <test-method is-config="true" signature="sample()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:19 IST" name="sample" finished-at="2024-05-21T21:44:28 IST" duration-ms="9633" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sample -->
+        <test-method signature="userloginwithinvalidcredentials()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:28 IST" name="userloginwithinvalidcredentials" finished-at="2024-05-21T21:44:29 IST" duration-ms="732" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userloginwithinvalidcredentials -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:29 IST" name="teardown" finished-at="2024-05-21T21:44:29 IST" duration-ms="247" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="sample()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:29 IST" name="sample" finished-at="2024-05-21T21:44:32 IST" duration-ms="2819" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sample -->
+        <test-method signature="userloginwithvalidcredentials()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:32 IST" name="userloginwithvalidcredentials" finished-at="2024-05-21T21:44:33 IST" duration-ms="892" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userloginwithvalidcredentials -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:testcases.Login@31304f14]" started-at="2024-05-21T21:44:33 IST" name="teardown" finished-at="2024-05-21T21:44:33 IST" duration-ms="176" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- testcases.Login -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
