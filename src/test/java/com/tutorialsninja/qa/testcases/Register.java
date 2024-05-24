@@ -8,10 +8,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.tutorialsninja.qa.base.Base;
+import com.tutorialsninja.qa.pages.AccountSucesspage;
+import com.tutorialsninja.qa.pages.Homepage;
+import com.tutorialsninja.qa.pages.Loginpage;
+import com.tutorialsninja.qa.pages.Registerpage;
 import com.tutorialsninja.qa.utils.Utilities;
 
 public class Register extends Base {
 	WebDriver driver;
+	Registerpage rp;
+	
 	public Register() {
 		super();
 	}
@@ -20,30 +26,100 @@ public class Register extends Base {
 	public void setup() {
 		
 		driver=intilizeBrowserAndOpenApplicationUrl(prop.getProperty("browserName"));
-		driver.findElement(By.xpath("//span[contains(text(),'My Account')]")).click();
-		driver.findElement(By.linkText("Register")).click();
+		Homepage homepage= new Homepage(driver);
+		homepage.clickmyAccountOption();
+	    rp = homepage.ClickOnRegisterOption();
 		
 	}
 	
-	@Test
+	@Test(priority =1)
 	public void verifyRegisterAccountByProvindManditoryFields() {
-		driver.findElement(By.id("input-firstname")).sendKeys(dataprop.getProperty("firstname"));
-		driver.findElement(By.id("input-lastname")).sendKeys(dataprop.getProperty("lastname"));
-		driver.findElement(By.id("input-email")).sendKeys(Utilities.genaratemailwithTimeStamps());
-		driver.findElement(By.id("input-telephone")).sendKeys(dataprop.getProperty("telephone"));
-		driver.findElement(By.id("input-password")).sendKeys(dataprop.getProperty("password"));
-		driver.findElement(By.id("input-confirm")).sendKeys(dataprop.getProperty("confirmpassword"));
-		driver.findElement(By.name("agree")).click();
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-		String actualtext = driver.findElement(By.xpath("//div[@id='content']/h1")).getText();
-		String Expectedtext = "Your Account Has Been Created!";
-		Assert.assertTrue(actualtext.contains(Expectedtext),"your account created is not displaed");
+		
+		 
+		rp.enterFirstName(dataprop.getProperty("firstname"));
+		rp.enterLastName(dataprop.getProperty("lastname"));
+		 rp.enterEmail(Utilities.genaratemailwithTimeStamps());
+		 rp.enterTelephoneNumber( dataprop.getProperty("telephone"));
+		 rp.enterPassword(dataprop.getProperty("password"));
+		 rp.enterConfirmPassword(dataprop.getProperty("confirmpassword"));
+		 rp.selectPolicyButton();
+		 rp.clickCOntinueButton();
+		 AccountSucesspage as= new AccountSucesspage(driver);
+		 
+		Assert.assertEquals(as.actualText(),dataprop.get("expectedtext"));
+		 
 		
 		
 	}
+	@Test(priority=2)
+	public void verifyDifferentWaysOfNavigatingRegisterPage() {
+		
+		Homepage homepage= new Homepage(driver);
+		homepage.clickmyAccountOption();
+		homepage.clickOnLoginOption();
+		
+	
+		Loginpage loginpage= new Loginpage(driver);
+		loginpage.clickOnNewCustumerButton();
+		 
+		Assert.assertEquals(rp.acutualRegisterAccountText(),dataprop.get("expectedRegisterAccoutText"));
+		
+		homepage.clickmyAccountOption();
+		homepage.clickOnLoginOption();
+		
+		loginpage.clickOnRegister();
+		Assert.assertEquals(rp.acutualRegisterAccountText(),dataprop.get("expectedRegisterAccoutText"));
+		
+
+		
+		
+	}
+	@Test(priority=3)
+	public void VerifyRegisterAccountDifferentPassword() {
+		
+		 
+		rp.enterFirstName(dataprop.getProperty("firstname"));
+		rp.enterLastName(dataprop.getProperty("lastname"));
+		 rp.enterEmail(Utilities.genaratemailwithTimeStamps());
+		 rp.enterTelephoneNumber( dataprop.getProperty("telephone"));
+		 rp.enterPassword(dataprop.getProperty("password"));
+		 rp.enterConfirmPassword(dataprop.getProperty("differentconfirmpassword"));
+		 rp.selectPolicyButton();
+		 rp.clickCOntinueButton();
+		 Assert.assertEquals(rp.warningMessageactualconfirmPasswrodDoesNotMatchPassword(),dataprop.getProperty("warningMessageExpectedconfirmPasswrodDoesNotMatchPassword"));
+		
+		 
+		
+		
+	}
+	@Test(priority=4)
+	public void VerifyRegisterWithoutSelectingPrivacypolicyButton() {
+		
+		 
+		rp.enterFirstName(dataprop.getProperty("firstname"));
+		rp.enterLastName(dataprop.getProperty("lastname"));
+		 rp.enterEmail(Utilities.genaratemailwithTimeStamps());
+		 rp.enterTelephoneNumber( dataprop.getProperty("telephone"));
+		 rp.enterPassword(dataprop.getProperty("password"));
+		 rp.enterConfirmPassword(dataprop.getProperty("confirmpassword"));
+		 rp.clickCOntinueButton();
+		 
+		 Assert.assertEquals(rp.actualWarningMessegePrivacyPolicy(),dataprop.getProperty("ExpectedWarningmessengePrivacyPolicy"));
+		
+		
+		
+	}
+
+
+	
+	
+	
 	@AfterMethod
 	public void close() {
+		
 		driver.quit();
+		
+		
 	}
 	
 

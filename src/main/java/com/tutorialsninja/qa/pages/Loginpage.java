@@ -15,6 +15,13 @@ public class Loginpage {
 	@FindBy(xpath="//input[@type='submit']")
 	private WebElement submitButton;
 	
+	
+	@FindBy(linkText= "Continue")
+	private WebElement newCustumerbutton;
+	
+	@FindBy(linkText="Register")
+	private WebElement rightColumnRegister;
+	
 	public Loginpage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
@@ -32,6 +39,15 @@ public class Loginpage {
 	}
 	public void clickOnSubmitButton() {
 		submitButton.click();
+		
+	}
+	
+	public void clickOnNewCustumerButton() {
+		newCustumerbutton.click();
+		
+	}
+	public void clickOnRegister() {
+		rightColumnRegister.click();
 		
 	}
 }

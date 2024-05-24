@@ -16,6 +16,9 @@ public class Homepage {
 	@FindBy(linkText="Login")
     private	WebElement loginOption;
 	
+	@FindBy(linkText="Register")
+	private WebElement RegisterOption;
+	
 	public Homepage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -27,6 +30,11 @@ public class Homepage {
 	}
 	public void clickOnLoginOption() {
 		loginOption.click();
+		
+	}
+	public Registerpage ClickOnRegisterOption() {
+		RegisterOption.click();
+		return new Registerpage(driver);
 		
 	}
 	
