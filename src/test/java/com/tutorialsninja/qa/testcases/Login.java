@@ -91,6 +91,9 @@ public class Login extends Base {
 		loginpage.forgottenlinkisavailableintheloginpage();
 		Accountpage accountpage =new Accountpage(driver);
 		Assert.assertTrue(accountpage.forgotpasswordpage(),"Forgot Your Password?" );
+		}
+	@Test
+	public void loginwithkeyboardkeys() {
 		
 	}
 	
