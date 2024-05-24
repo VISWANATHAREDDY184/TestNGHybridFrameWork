@@ -14,13 +14,13 @@ public class Loginpage {
 	private WebElement passwordField;
 	@FindBy(xpath="//input[@type='submit']")
 	private WebElement submitButton;
+	@FindBy(linkText="Forgotten Password")
+    private WebElement clickonforttenpasswordlink;
 	
 	public Loginpage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
-		
-		
-	}
+		}
 
 	public void enterEmailAddress(String emailtext) {
 		emailField.sendKeys(emailtext);
@@ -34,4 +34,7 @@ public class Loginpage {
 		submitButton.click();
 		
 	}
+	public void forgottenlinkisavailableintheloginpage(){
+        clickonforttenpasswordlink.click();
+    }
 }

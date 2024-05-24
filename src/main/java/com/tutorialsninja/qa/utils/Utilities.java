@@ -14,5 +14,9 @@ public class Utilities {
 		return "suramvinod"+timestamp+"@gmail.com";
 		 
 	}
+	public static Object generateemailtimestamp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
