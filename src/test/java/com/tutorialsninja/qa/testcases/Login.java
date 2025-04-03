@@ -51,6 +51,7 @@ public void verifyLoginWithValidCredentials() {
 	@AfterMethod
 	public void close() {
 		driver.quit();
+		System.out.println("browser closed");
 	}
 
 	
